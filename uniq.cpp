@@ -46,7 +46,7 @@ uniq_file(std::string fname, bool show_count) {
 }
 
 int main(int argc, char **argv) {
-  po::options_description generic("Generic options");
+  po::options_description generic("Usage");
   generic.add_options()
     ("help,h", "print help message")
     ("count,c", "count input");
@@ -66,11 +66,17 @@ int main(int argc, char **argv) {
             options(cmdline_options).positional(p).run(), vm);
 
   if (vm.count("help")) {
-    std::cout << generic << std::endl;
+    std::cout << generic;
     return EXIT_FAILURE;
   }
 
   bool show_count = static_cast<bool> (vm.count("count"));
+
+  if (vm["input-file"].empty()) {
+    /* no input files, show help and exit */
+    std::cout << generic;
+    return EXIT_FAILURE;
+  }
 
   std::vector<std::string> fnames = vm["input-file"].as<
     std::vector<std::string> >();
