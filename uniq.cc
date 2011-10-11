@@ -1,10 +1,10 @@
 /* a simple, non-comprehensive uniq(1) command */
 
-/* get EXIT_SUCCESS, EXIT_FAILURE */
-#include <stdlib.h>
-
 #include <boost/program_options.hpp>
 namespace po = boost::program_options;
+
+/* get EXIT_SUCCESS, EXIT_FAILURE */
+#include <cstdlib>
 
 #include <iostream>
 #include <fstream>

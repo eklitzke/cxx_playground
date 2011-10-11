@@ -1,6 +1,6 @@
 CFLAGS=-g
 
-uniq: uniq.cpp
+uniq: uniq.cc
 	$(CXX) $(CFLAGS) -lboost_program_options -o $@ $<
 
 clean:
